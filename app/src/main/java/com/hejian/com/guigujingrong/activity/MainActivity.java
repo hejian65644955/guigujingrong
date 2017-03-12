@@ -14,6 +14,7 @@ import com.hejian.com.guigujingrong.fragment.HomeFragment;
 import com.hejian.com.guigujingrong.fragment.InvestFragment;
 import com.hejian.com.guigujingrong.fragment.MoreFragment;
 import com.hejian.com.guigujingrong.fragment.PropertyFragment;
+import com.hejian.com.guigujingrong.utils.AppManger;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        AppManger.getInstance().AddActivity(MainActivity.this);
         initData();
         initListener();
     }
