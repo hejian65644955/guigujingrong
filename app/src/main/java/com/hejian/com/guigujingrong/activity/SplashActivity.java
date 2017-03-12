@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.hejian.com.guigujingrong.R;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
@@ -30,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
-        Log.i("aaa", "onCreate: "+1/0);
+//        Log.i("aaa", "onCreate: "+1/0);
 
         AppManger.getInstance().AddActivity(this);
 
