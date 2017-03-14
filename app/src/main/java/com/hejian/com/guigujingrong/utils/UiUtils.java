@@ -37,4 +37,13 @@ public class UiUtils {
         float density = getContext().getResources().getDisplayMetrics().density;
         return (int) (px / density + 0.5);
     }
+
+    public static void runOnUiThread(Runnable runnable) {
+        //比较pid来判断是不是主线程
+        if(MyApplication.getThreadid()== android.os.Process.myPid()){
+            runnable.run();
+        }else {
+            MyApplication.getHandler().post(runnable);
+        }
+    }
 }

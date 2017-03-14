@@ -22,6 +22,9 @@ public class MyApplication extends Application {
         super.onCreate();
         context =this;
 
+        threadid = android.os.Process.myPid();
+        handler = new Handler();
+
         //初始化未捕获异常 上线的时候在打开
         //CrashHandler.getInstance().init();
     }

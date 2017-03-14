@@ -32,9 +32,9 @@ public class ThreadPool {
     *
     * */
 
-    private static ExecutorService executorService = Executors.newCachedThreadPool();
+    private  ExecutorService executorService = Executors.newCachedThreadPool();
 
-    public static ExecutorService getGlobalThread(){
+    public  ExecutorService getGlobalThread(){
         return executorService;
     }
 

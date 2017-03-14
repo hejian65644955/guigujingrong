@@ -7,26 +7,66 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hejian.com.guigujingrong.view.LoadingPager;
+
+import butterknife.ButterKnife;
+
 /**
  * Created by 何健 on 2017/3/13.
  */
 
 public abstract class BaseFragment extends Fragment {
+    private LoadingPager loadingPager;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        loadingPager = new LoadingPager(getActivity()) {
+            @Override
+            protected void onSuccess(ResultState resultState, View sucessView) {
+                ButterKnife.bind(BaseFragment.this,sucessView);
+                initData(resultState.getJson());
+            }
 
-        return initView();
+            @Override
+            protected String getUrl() {
+                return getChildUrl();
+            }
+
+            @Override
+            public int getViewId() {
+                return getLayoutid();
+            }
+        };
+
+        return loadingPager;
     }
 
-    public abstract View initView();
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initData();
+        //初始化数据
+        //initData();
+        //初始化监听
+      //  initListener();
+        loadingPager.loadData();
     }
 
-    public abstract void initData();
+    //protected abstract void initListener();
+
+    protected abstract void initData(String json);
+
+
+    public abstract int getLayoutid();
+
+    //每一个fragment返回的地址
+    public abstract String getChildUrl();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
 }
