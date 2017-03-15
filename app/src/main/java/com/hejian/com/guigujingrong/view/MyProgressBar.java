@@ -105,7 +105,7 @@ public class MyProgressBar extends View {
 
         float tx =measuredWidth/2-rect.width()/2;
 
-        float ty =measuredHeight/2-rect.height()/2;
+        float ty =measuredHeight/2+rect.height()/2;
         canvas.drawText(text,tx,ty,paint);
     }
 

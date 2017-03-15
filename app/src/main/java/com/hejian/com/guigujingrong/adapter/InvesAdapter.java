@@ -20,7 +20,6 @@ public class InvesAdapter extends FragmentPagerAdapter {
         super(fm);
         if(fragments!=null &&fragments.size()>0){
             this.fragments = fragments;
-
         }
     }
 
