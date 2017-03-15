@@ -74,7 +74,7 @@ public class InvestFragment extends BaseFragment {
 
     }
 
-    private void initListener() {
+    public void initListener() {
         investVp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

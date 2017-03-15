@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.hejian.com.guigujingrong.R;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
@@ -14,34 +13,38 @@ import android.widget.TextView;
 import com.hejian.com.guigujingrong.utils.AppManger;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @Bind(R.id.splash_tv_version)
     TextView splashTvVersion;
     @Bind(R.id.activity_splash)
     RelativeLayout activitySplash;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        ButterKnife.bind(this);
+    protected void initLisetener() {
 
-//        Log.i("aaa", "onCreate: "+1/0);
-
-        AppManger.getInstance().AddActivity(this);
-
-        initData();
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
+        AppManger.getInstance().AddActivity(this);
         //设置版本号
         setVersion();
 
         //设置动画
         setAnimation();
+    }
+
+    @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_splash;
     }
 
     private void setAnimation() {
@@ -55,8 +58,16 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(SplashActivity.this,MainActivity.class));
-                finish();
+                if (isLogin()) {
+                    //登录过进入
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    //没有登录过进入
+                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                    finish();
+
+                }
 
             }
 
@@ -68,6 +79,14 @@ public class SplashActivity extends AppCompatActivity {
         activitySplash.startAnimation(animation);
     }
 
+    private boolean isLogin() {
+        if(TextUtils.isEmpty(getUser().getData().getName())){
+            return false;
+        }
+
+        return true;
+    }
+
     private void setVersion() {
         splashTvVersion.setText(getVersion());
     }
@@ -76,7 +95,7 @@ public class SplashActivity extends AppCompatActivity {
         try {
             //拿到包管理器
             PackageManager packageManager = getPackageManager();
-        //拿到包信息
+            //拿到包信息
             PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
             //每次发布新一版本要加一
             int versionCode = packageInfo.versionCode;

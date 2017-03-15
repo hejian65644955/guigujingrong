@@ -50,6 +50,11 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     public int getLayoutid() {
         return R.layout.fragment_home;
     }

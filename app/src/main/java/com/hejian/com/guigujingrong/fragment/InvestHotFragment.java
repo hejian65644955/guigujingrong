@@ -62,4 +62,9 @@ public class InvestHotFragment extends BaseFragment {
         return null;
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
 }

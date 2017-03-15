@@ -43,7 +43,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.hejian.com.guigujingrong.activity.MainActivity"></activity>
+        <activity android:name="com.hejian.com.guigujingrong.activity.MainActivity" />
+        <activity android:name="com.hejian.com.guigujingrong.activity.LoginActivity" />
+        <activity android:name="com.hejian.com.guigujingrong.activity.RegesterActivity"></activity>
     </application>
 
 </manifest>

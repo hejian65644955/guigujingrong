@@ -58,6 +58,11 @@ public class InvestRecommendFragment extends BaseFragment {
         return null;
     }
 
+    @Override
+    protected void initListener() {
+
+    }
+
     class RecommendAdapter implements StellarMap.Adapter{
 
         //有几个组

@@ -45,4 +45,9 @@ public class InvestAllFragment extends BaseFragment {
 
         return AppNetConfig.PRODUCT;
     }
+
+    @Override
+    protected void initListener() {
+
+    }
 }

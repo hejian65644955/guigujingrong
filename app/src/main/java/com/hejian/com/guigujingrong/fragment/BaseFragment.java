@@ -64,6 +64,8 @@ public abstract class BaseFragment extends Fragment {
     //每一个fragment返回的地址
     public abstract String getChildUrl();
 
+    protected abstract void initListener();
+
     @Override
     public void onDestroy() {
         super.onDestroy();
