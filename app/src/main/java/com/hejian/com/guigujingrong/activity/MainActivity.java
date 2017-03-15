@@ -2,10 +2,9 @@ package com.hejian.com.guigujingrong.activity;
 
 
 import android.hejian.com.guigujingrong.R;
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,12 +19,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 import static android.hejian.com.guigujingrong.R.id.fl_main_content;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Bind(R.id.fl_main_content)
     FrameLayout flMainContent;
@@ -37,22 +35,29 @@ public class MainActivity extends AppCompatActivity {
     private PropertyFragment propertyFragment;
     private boolean isDouble = false;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
+
+    public void initData() {
         AppManger.getInstance().AddActivity(MainActivity.this);
-        initData();
-        initListener();
-    }
-
-    private void initData() {
         switchFragment(R.id.rb_main);
     }
 
-    private void initListener() {
+    @Override
+    protected void initTitle() {
+
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        // 去掉窗口标题
+      //  requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 隐藏顶部的状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        return R.layout.activity_main;
+    }
+
+    public void initLisetener() {
         mainRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
