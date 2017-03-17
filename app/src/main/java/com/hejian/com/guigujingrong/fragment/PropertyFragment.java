@@ -1,11 +1,14 @@
 package com.hejian.com.guigujingrong.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hejian.com.guigujingrong.R;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hejian.com.guigujingrong.activity.LineChartActivity;
 import com.hejian.com.guigujingrong.activity.MainActivity;
 import com.hejian.com.guigujingrong.bean.UserInfo;
 import com.hejian.com.guigujingrong.utils.AppNetConfig;
@@ -44,6 +47,7 @@ public class PropertyFragment extends BaseFragment {
 
     @Override
     protected void initData(String json) {
+        initListener();
         MainActivity activity = (MainActivity) getActivity();
         UserInfo userInfo = activity.getUser();
         //设置头像名
@@ -63,10 +67,9 @@ public class PropertyFragment extends BaseFragment {
                     @Override
                     public Bitmap transform(Bitmap source) {
                         Bitmap bitmap = BitmapUtils.circleBitmap(source);
-                        source.recycle();
+                        source.recycle();//释放原来的图片
                         return bitmap;
                     }
-
                     @Override
                     public String key() {
 
@@ -88,6 +91,25 @@ public class PropertyFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+        llZichan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        llTouziZhiguan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        llTouzi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),LineChartActivity.class));
+            }
+        });
     }
 }

@@ -34,8 +34,8 @@ public abstract class LoadingPager  extends FrameLayout{
 
     public LoadingPager(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
         this.mContext =context;
+        init();
     }
 
     private int STATE_LOADING = 1; //加载中
@@ -73,6 +73,7 @@ public abstract class LoadingPager  extends FrameLayout{
                 showView();
             }
         });
+
     }
 
     private void showView() {
@@ -94,7 +95,6 @@ public abstract class LoadingPager  extends FrameLayout{
         //是否展示成功页面
         sucessView.setVisibility(
                 current_state == STATE_SUCCESS ? View.VISIBLE : View.INVISIBLE);
-
     }
 
      /*

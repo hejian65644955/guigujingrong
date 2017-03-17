@@ -109,6 +109,4 @@ public class HomeFragment extends BaseFragment {
                     .into(imageView);
         }
     }
-
-
 }

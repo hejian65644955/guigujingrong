@@ -57,7 +57,6 @@ public class AppManger {
                 if(currentActivity == activity){
                     stack.remove(currentActivity);
                 }
-
             }
         }
     }

@@ -45,7 +45,8 @@
         </activity>
         <activity android:name="com.hejian.com.guigujingrong.activity.MainActivity" />
         <activity android:name="com.hejian.com.guigujingrong.activity.LoginActivity" />
-        <activity android:name="com.hejian.com.guigujingrong.activity.RegesterActivity"></activity>
+        <activity android:name="com.hejian.com.guigujingrong.activity.RegesterActivity" />
+        <activity android:name="com.hejian.com.guigujingrong.activity.LineChartActivity"></activity>
     </application>
 
 </manifest>

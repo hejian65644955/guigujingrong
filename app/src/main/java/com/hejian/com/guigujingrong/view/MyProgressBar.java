@@ -55,8 +55,6 @@ public class MyProgressBar extends View {
             sweepColor =typedArray.getColor(R.styleable.progress_sweepColor,Color.RED);
             sweepArc =typedArray.getInteger(R.styleable.progress_sweepArc,0);
             typedArray.recycle();
-
-
     }
 
     /**
